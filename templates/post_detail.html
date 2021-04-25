@@ -6,13 +6,15 @@
   <p style="white-space: pre-wrap;">{{post.body}} </p>
 </div>
 
-{% if user.is_authenticated %}
+{% if user == post.author %}
 <a href="{% url 'post_edit' post.pk %}"> + Edit Blog Post</a>
 <a href="{% url 'post_delete' post.pk %}"> + Delete Blog Post</a>
+{% else %}
+<h5>Written by: {{post.author}}</h5>
 {% endif %}
 
 <div class="post-entry">
-  <p>Comments({% len(comment_list) %})</p>
+  <h5>Comments({{comment_list.count}})</h5>
   {% for comment in comment_list %}
   <h3>{{comment.author}}</h3>
   <p>{{comment.body}} </p>
