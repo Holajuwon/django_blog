@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="new-post">
+  <h1>Login</h1>
+  <form action="" method="post">
+    <!-- CROSS SITE REQUEST FUNCTION -->
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Login Into Your Account">
+  </form>
+  <a href="{% url 'password_reset'%}">Forgot Password</a>
+</div>
+{% endblock %}
